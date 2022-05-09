@@ -42,5 +42,21 @@ namespace my_books.Controllers
             var book = _bookService.GetBookById(id);
             return Ok(book);
         }
+
+        //this is a service endpint to update an existing book given an id
+        [HttpPut("Update-book-by-Id/{id}")]
+        public IActionResult UpdateBookById(int id, [FromBody]BookVM book)
+        {
+            var updatedBook = _bookService.UpdateBookById(id, book);
+            return Ok(updatedBook);
+        }
+
+        //this is a service endpoint to delete a book based on a given id
+        [HttpDelete("delete-book-by-id/{id}")]
+        public IActionResult DeleteBookById(int id)
+        {
+            _bookService.DeleteBookById(id);
+            return Ok();
+        }
     }
 }
