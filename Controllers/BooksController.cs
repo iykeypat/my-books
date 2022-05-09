@@ -20,10 +20,10 @@ namespace my_books.Controllers
         }
 
         //this is a service endpoint to add a new book to database
-        [HttpPost("add-book")]
+        [HttpPost("add-book-with-authors")]
         public IActionResult AddBook([FromBody]BookVM book)
         {
-            _bookService.AddBook(book);
+            _bookService.AddBookWithAuthors(book);
             return Ok();
         }
 
