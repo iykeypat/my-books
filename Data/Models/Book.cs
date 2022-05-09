@@ -17,5 +17,9 @@ namespace my_books.Data.Models
         public int? Rate { get; set; }
         public string CoverUrl { get; set; }
         public DateTime DateAdded { get; set; }
+
+        //Navigation properties
+        public int? PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
     }
 }
