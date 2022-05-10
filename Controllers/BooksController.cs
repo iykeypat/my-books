@@ -36,7 +36,7 @@ namespace my_books.Controllers
         }
 
         //this is service endpoint to retrieve a single book from the db give the id
-        [HttpGet("get-all-books/{id}")]
+        [HttpGet("get-book-by-id/{id}")]
         public IActionResult GetBook(int id)
         {
             var book = _bookService.GetBookById(id);
