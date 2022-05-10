@@ -28,5 +28,13 @@ namespace my_books.Controllers
             return Ok();
         }
 
+        //service endpoint to get publisher along with books published and authors
+        [HttpGet("get-publisher-books-with-authors/{id}")]
+        public IActionResult GetPublisherData(int id)
+        {
+            var _response = _publishersservice.GetPublisherData(id);
+            return Ok(Response);
+        }
+
     }
 }
