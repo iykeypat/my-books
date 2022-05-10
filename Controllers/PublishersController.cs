@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using my_books.Data.Services;
 using my_books.Data.ViewModels;
+using my_books.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,21 @@ namespace my_books.Controllers
 
         //service endpoint to add a new publisheer
         [HttpPost("add-publisher")]
-        public IActionResult AddAuthor([FromBody] PublisherVM publisher)
+        public IActionResult AddPublisher([FromBody] PublisherVM publisher)
         {
-            _publishersservice.AddPublisher(publisher);
-            return Ok();
+            try
+            {
+                var _publisher = _publishersservice.AddPublisher(publisher);
+                //return Ok();
+                return Created(nameof(AddPublisher), _publisher);
+            }
+            catch (PublisherNameException ex)
+            {
+
+                return BadRequest($"{ex.Message}, Publisher name: {ex.PublisherName}");
+            }
+
+            
         }
 
         //service endpoint to get publisher along with books published and authors
@@ -39,8 +51,17 @@ namespace my_books.Controllers
         [HttpDelete("delete-publisher-by-id/{id}")]
         public IActionResult DeletePublisherById(int id)
         {
-            _publishersservice.DeletePublisherById(id);
-            return Ok();
+          
+            try
+            {
+                _publishersservice.DeletePublisherById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
     }
