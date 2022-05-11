@@ -1,4 +1,5 @@
 ﻿using my_books.Data.Models;
+using my_books.Data.Paging;
 using my_books.Data.ViewModels;
 using my_books.Exceptions;
 using System;
@@ -33,7 +34,7 @@ namespace my_books.Data.Services
             return _publisher;
         }
 
-        public List<Publisher> GetAllPublishers(string sortBy, string searchString)
+        public List<Publisher> GetAllPublishers(string sortBy, string searchString, int? pageNumber)
         {
             var _allPublishers = _context.Publishers.OrderBy(n=>n.Name).ToList(); //this line sorts in ascending order by default
             
@@ -55,6 +56,12 @@ namespace my_books.Data.Services
             {
                 _allPublishers = _allPublishers.Where(n => n.Name.Contains(searchString,StringComparison.CurrentCultureIgnoreCase)).ToList();
             }
+
+            //paging
+            int pageSize = 5;
+            _allPublishers = PaginatedList<Publisher>.Create(_allPublishers.AsQueryable(), pageNumber ?? 1, pageSize);
+
+
                 return _allPublishers;
         }
 
