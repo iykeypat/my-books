@@ -33,9 +33,11 @@ namespace my_books.Data.Services
             return _publisher;
         }
 
-        public List<Publisher> GetAllPublishers(string sortBy)
+        public List<Publisher> GetAllPublishers(string sortBy, string searchString)
         {
             var _allPublishers = _context.Publishers.OrderBy(n=>n.Name).ToList(); //this line sorts in ascending order by default
+            
+            //the code below will sort according to the requested order
             if (!string.IsNullOrEmpty(sortBy))
             {
                 switch (sortBy)
@@ -47,7 +49,13 @@ namespace my_books.Data.Services
                         break;
                 }
             }
-            return _allPublishers;
+
+            //the code below will filter the result according to the provided serachString
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                _allPublishers = _allPublishers.Where(n => n.Name.Contains(searchString,StringComparison.CurrentCultureIgnoreCase)).ToList();
+            }
+                return _allPublishers;
         }
 
         //this service gets the publisher along with the books and authors
