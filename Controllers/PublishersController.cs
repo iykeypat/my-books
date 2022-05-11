@@ -22,10 +22,18 @@ namespace my_books.Controllers
         }
 
         [HttpGet("get-all-publishers")]
-        public IActionResult GetALlPublishers()
+        public IActionResult GetALlPublishers(string sortBy)
         {
-            var _publishers = _publishersservice.GetAllPublishers();
-            return Ok(_publishers);
+            try
+            {
+                var _publishers = _publishersservice.GetAllPublishers(sortBy);
+                return Ok(_publishers);
+            }
+            catch (Exception)
+            {
+
+                return BadRequest("Sorry, we could not load the publisher");
+            }
         }
         //service endpoint to add a new publisheer
         [HttpPost("add-publisher")]
