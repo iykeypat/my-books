@@ -33,6 +33,11 @@ namespace my_books.Data.Services
             return _publisher;
         }
 
+        public List<Publisher> GetAllPublishers()
+        {
+            return _context.Publishers.ToList();
+        }
+
         //this service gets the publisher along with the books and authors
         public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId)
         {
