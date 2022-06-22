@@ -1,12 +1,9 @@
 ﻿using my_books.Data.Models;
-using my_books.Data.Paging;
 using my_books.Data.ViewModels;
-using my_books.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace my_books.Data.Services
 {
@@ -21,8 +18,7 @@ namespace my_books.Data.Services
         //this service method adds a new publisher to the publishers table
         public Publisher AddPublisher(PublisherVM publisher)
         {
-            if (StringStartWithNumber(publisher.Name)) throw new PublisherNameException(
-                "Name starts with a number", publisher.Name);
+            
 
             var _publisher = new Publisher()
             {
@@ -59,7 +55,7 @@ namespace my_books.Data.Services
 
             //paging
             int pageSize = 5;
-            _allPublishers = PaginatedList<Publisher>.Create(_allPublishers.AsQueryable(), pageNumber ?? 1, pageSize);
+            //_allPublishers = PaginatedList<Publisher>.Create(_allPublishers.AsQueryable(), pageNumber ?? 1, pageSize);
 
 
                 return _allPublishers;

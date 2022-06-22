@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using my_books.Data.Services;
 using my_books.Data.ViewModels;
-using my_books.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace my_books.Controllers
 {
@@ -45,10 +40,10 @@ namespace my_books.Controllers
                 //return Ok();
                 return Created(nameof(AddPublisher), _publisher);
             }
-            catch (PublisherNameException ex)
+            catch (Exception ex)
             {
 
-                return BadRequest($"{ex.Message}, Publisher name: {ex.PublisherName}");
+                return BadRequest(ex.Message);
             }
 
             
