@@ -22,15 +22,15 @@ namespace my_books.Controllers
 
         //this is a service endpoint to add a new employee to database
         [HttpPost("add-employee")]
-        public IActionResult AddEmployee(/*[FromBody] Employee employee*/int id, string name, string position, DateTime dob, int salary, string email, string password)
+        public IActionResult AddEmployee(Employee employee)
         {
-            _employeesService.AddEmployee(/*employee*/id, name, position, dob, salary, email, password);
+            _employeesService.AddEmployee(employee);
             return Ok("Employee added successfully");
         }
 
         //this is service endpoint to retrieve all employees from the db
         [HttpGet("get-all-employees")]
-        public IActionResult GetAllBooks()
+        public IActionResult GetAllEmployees()
         {
             var allEmployees = _employeesService.GetAllEmployees();
             return Ok(allEmployees);
@@ -45,8 +45,8 @@ namespace my_books.Controllers
         }
 
         //this is a service endpint to update an existing employee given an id
-        [HttpPut("Update-employee-by-Id/{id}")]
-        public IActionResult UpdateEmployeeById(int id, [FromBody]Employee employee)
+        [HttpPut("update-employee-by-id/{id}")]
+        public IActionResult UpdateEmployeeById(int id,Employee employee)
         {
             var updatedEmployee = _employeesService.UpdateEmployeeById(id, employee);
             return Ok(updatedEmployee);

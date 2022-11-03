@@ -16,17 +16,17 @@ namespace my_books.Data.Services
         }
 
         //service to add a new employee
-        public void AddEmployee(/*Employee _employee*/int id, string name, string position, DateTime dob, int salary, string email, string password)
+        public void AddEmployee(Employee emp)
         {
             var _employee = new Employee()
             {
-                Id = id,
-                Name = name,
-                Position = position,
-                Dob = dob,
-                Salary = salary,
-                Email = email,
-                Password = password
+                Id = emp.Id,
+                Name = emp.Name,
+                Position = emp.Position,
+                Dob = emp.Dob,
+                Salary = emp.Salary,
+                Email = emp.Email,
+                Password = emp.Password
             };
             _context.Employees.Add(_employee);
             _context.SaveChanges();
@@ -94,7 +94,7 @@ namespace my_books.Data.Services
                 return e.Message;
             }
 
-            return "Employee ${id} was deleted successfully";
+            return "Success";
         }
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "my-books", "my-books.csproj", "{9ED0339F-7D01-4003-B5B7-BC3766F4ABF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "my-books-EmployeePortal-API", "my-books-EmployeePortal-API.csproj", "{9ED0339F-7D01-4003-B5B7-BC3766F4ABF6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePortal", "..\EmployeePortal\EmployeePortal.csproj", "{7470C536-1292-45A0-B4B2-D98D5FD2DE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePortalMVC", "..\EmployeePortal\EmployeePortalMVC.csproj", "{7470C536-1292-45A0-B4B2-D98D5FD2DE6E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9ED0339F-7D01-4003-B5B7-BC3766F4ABF6} = {9ED0339F-7D01-4003-B5B7-BC3766F4ABF6}
 	EndProjectSection
